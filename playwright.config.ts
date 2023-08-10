@@ -20,10 +20,11 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
 
   /* Retry on CI only */
+  // The code below means retrying failed tests twice on CI but does not retry locally
   // retries: process.env.CI ? 2 : 0,
   retries: 2,
 
-  /* Opt out of parallel tests on CI. */
+  /* Opt out of parallel tests on CI. Undefined means playwright will decide that for us locally */
   workers: process.env.CI ? 1 : undefined,
 
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
